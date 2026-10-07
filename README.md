@@ -49,27 +49,28 @@ NBK Nonton Bareng Kuy merupakan aplikasi Android untuk mencari, melihat, dan mem
 
 ### Welcome Screen
 
-![Welcome Screen](ScreenShoot/Welcome.png)
+<img src="ScreenShoot/Welcome.png" alt="Welcome Screen" width="250">
 
 ### Home Screen
 
-![Home Screen](ScreenShoot/Home.png)
+<img src="ScreenShoot/Home.png" alt="Home Screen" width="250">
 
 ### Menu
 
-![Menu](ScreenShoot/menu.png)
+<img src="ScreenShoot/menu.png" alt="Menu" width="250">
 
 ### Info App
 
-![Info App](ScreenShoot/Tentang.png)
+<img src="ScreenShoot/Tentang.png" alt="Info App" width="250">
 
 ### Profile
 
-![Profile](ScreenShoot/Profil.png)
+<img src="ScreenShoot/Profil.png" alt="Profile" width="250">
 
 ### Detail Anime
 
-![Detail Anime](ScreenShoot/Detail.png)
+<img src="ScreenShoot/Detail.png" alt="Detail Anime" width="250">
+
 
 ## Arsitektur
 
