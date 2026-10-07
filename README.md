@@ -19,16 +19,11 @@ NBK Nonton Bareng Kuy merupakan aplikasi Android untuk mencari, melihat, dan mem
 
 * Welcome Screen
 * Home Screen
-* Pencarian anime
 * Filter genre
 * Detail informasi anime
 * Menu aplikasi
 * Profile pengguna
 * Informasi aplikasi
-* Loading dan error state
-* Pengambilan data dari Jikan API
-* Fallback data ketika API mengalami kendala
-* Navigasi menggunakan Navigation Compose
 
 ## Tech Stack
 
