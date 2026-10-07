@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.AnimeFinder" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.AnimeFinder" parent="android:Theme.Material.NoActionBar">
+
+        <!-- 1. Background utama (untuk Android versi lama) -->
+        <!-- Ganti #0F172A dengan kode warna biru tua/hitam tema Anda -->
+        <item name="android:windowBackground">#0F172A</item>
+
+        <!-- 2. Warna Status Bar (jam & baterai di atas) -->
+        <item name="android:statusBarColor">#0F172A</item>
+
+        <!-- 3. Warna Navigation Bar (tombol back/home di bawah) -->
+        <item name="android:navigationBarColor">#0F172A</item>
+
+        <!-- 4. PENTING: Splash Screen untuk Android 12+ (API 31+) -->
+        <!-- Ini yang menghilangkan flash putih saat pertama kali buka app di HP baru -->
+        <item name="android:windowSplashScreenBackground">#0F172A</item>
+
+    </style>
+
 </resources>

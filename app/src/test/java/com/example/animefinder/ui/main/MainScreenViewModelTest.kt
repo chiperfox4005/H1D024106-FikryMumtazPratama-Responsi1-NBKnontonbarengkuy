@@ -2,7 +2,7 @@ package com.example.animefinder.ui.main
 
 import com.example.animefinder.model.AnimeDetailResponse
 import com.example.animefinder.model.AnimeSearchResponse
-import com.example.animefinder.network.JikanApiService
+import com.example.animefinder.network.TenraiApiService
 import com.example.animefinder.repository.AnimeRepository
 import com.example.animefinder.viewmodel.AnimeViewModel
 import com.example.animefinder.viewmodel.UiState
@@ -42,7 +42,7 @@ class MainScreenViewModelTest {
   }
 }
 
-private class FakeJikanApiService : JikanApiService {
+private class FakeJikanApiService : TenraiApiService {
   override suspend fun searchAnime(
     query: String?,
     genres: String?,

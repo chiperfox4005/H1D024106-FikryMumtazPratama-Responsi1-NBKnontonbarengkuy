@@ -8,7 +8,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
-    private const val BASE_URL = "https://api.jikan.moe/v4/"
+    // 1. GANTI BASE URL KE TENRAI API
+    private const val BASE_URL = "https://api.tenrai.org/v1/"
 
     val okHttpClient: OkHttpClient by lazy {
         OkHttpClient.Builder()
@@ -18,8 +19,8 @@ object RetrofitClient {
             .retryOnConnectionFailure(true)
             .addInterceptor { chain ->
                 val request = chain.request().newBuilder()
+                    // User-Agent tetap dipertahankan untuk menghindari blokir 403 Forbidden
                     .header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
-                    .header("Accept", "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8")
                     .build()
                 chain.proceed(request)
             }
@@ -38,12 +39,13 @@ object RetrofitClient {
         }
     }
 
-    val apiService: JikanApiService by lazy {
+    // 2. GANTI JikanApiService MENJADI TenraiApiService
+    val apiService: TenraiApiService by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(JikanApiService::class.java)
+            .create(TenraiApiService::class.java)
     }
 }

@@ -4,19 +4,23 @@ import com.example.animefinder.model.Anime
 import com.example.animefinder.model.AnimeImages
 import com.example.animefinder.model.Genre
 import com.example.animefinder.model.ImageUrl
-import com.example.animefinder.network.JikanApiService
+import com.example.animefinder.network.TenraiApiService
 
-class AnimeRepository(private val apiService: JikanApiService) {
-    
+class AnimeRepository(private val apiService: TenraiApiService) {
+
     suspend fun searchAnime(query: String?, genreId: String?): List<Anime> {
         val cleanQuery = if (query.isNullOrBlank()) null else query.trim()
         return try {
             val response = if (cleanQuery == null && genreId == null) {
                 apiService.getTopAnime()
             } else {
-                apiService.searchAnime(query = cleanQuery, genres = genreId)
+                // PERBAIKAN 1: 'genres' diganti menjadi 'genre' sesuai TenraiApiService
+                apiService.searchAnime(query = cleanQuery, genre = genreId)
             }
-            val data = response.data
+
+            // PERBAIKAN 2: Tambahkan .body() sebelum .data
+            val data = response.body()?.data
+
             if (data.isNullOrEmpty()) {
                 filterFallback(cleanQuery, genreId)
             } else {
@@ -29,8 +33,11 @@ class AnimeRepository(private val apiService: JikanApiService) {
 
     suspend fun getAnimeDetail(id: Int): Anime? {
         return try {
-            val response = apiService.getAnimeDetail(id = id)
-            response.data ?: fallbackAnimeList.find { it.malId == id }
+            // PERBAIKAN 3: 'getAnimeDetail' diganti menjadi 'getAnimeById'
+            val response = apiService.getAnimeById(id = id)
+
+            // PERBAIKAN 4: Tambahkan .body() sebelum .data
+            response.body()?.data ?: fallbackAnimeList.find { it.malId == id }
         } catch (e: Exception) {
             fallbackAnimeList.find { it.malId == id } ?: fallbackAnimeList.first()
         }
